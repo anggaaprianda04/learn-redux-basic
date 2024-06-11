@@ -12,12 +12,13 @@ const ProductList = ({ products }) => {
       {products.map((product, index) => {
         const id = product.id;
         const price = product.price;
+        const name = product.title;
         return (
           <div
             className="flex flex-col p-2 transition-colors bg-white rounded-md h-80 hover:bg-gray-200 hover:duration-150 hover:shadow-md hover:shadow-black"
             key={index}>
             <img
-              className="object-fill w-full h-48"
+              className="object-cover w-full h-44"
               src={product.image}
               alt={product.image}
             />
@@ -29,9 +30,11 @@ const ProductList = ({ products }) => {
                 <p>{`Price : ${formatMoney(product.price, "USD", "en-US")}`}</p>
                 <Button
                   title="Add to cart"
-                  onClick={() =>
-                    dispatch(addToCart({ id, qty: 1, price: price }))
-                  }
+                  onClick={() => {
+                    dispatch(
+                      addToCart({ id, name: name, qty: 1, price: price })
+                    );
+                  }}
                 />
               </div>
             </div>

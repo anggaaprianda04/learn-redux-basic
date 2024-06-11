@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { formatMoney } from "../../utils";
 import imgEmptyCart from "../../../src/assets/empty.png";
+import TableCart from "./TableCart";
 
 const Modal = ({ openModal }) => {
   const cart = useSelector((state) => state.cart);
@@ -16,9 +17,9 @@ const Modal = ({ openModal }) => {
   }, [cart]);
 
   return (
-    <div className="absolute inset-0 bg-gray-900 mt-14 bg-opacity-65">
-      <div className="flex justify-end w-full max-w-full max-h-full p-4">
-        <div className="z-50 w-4/12 bg-white rounded-lg shadow">
+    <div className="absolute inset-0 top-0 left-0 right-0 bg-gray-900 mt-14 bg-opacity-65">
+      <div className="flex justify-end p-4">
+        <div className="z-50 w-5/12 bg-white rounded-lg shadow">
           <div className="flex items-center justify-between p-4 border-b rounded-t md:p-5 dark:border-gray-600">
             <h3 className="text-xl font-semibold text-black">Cart</h3>
             <button
@@ -45,15 +46,18 @@ const Modal = ({ openModal }) => {
           {/* Modal body */}
           {cart.data.length > 0 ? (
             <div className="p-4 space-y-4 md:p-5">
-              <div className="flex justify-between font-bold">
-                <p>Total Price : </p>
-                <p>{formatMoney(totalPrice, "USD", "en-US")}</p>
+              <div className="flex flex-col justify-between">
+                <TableCart listCart={cart.data} />
+                <div className="flex justify-between mt-4 font-bold">
+                  <p>Total Price : </p>
+                  <p>{formatMoney(totalPrice, "USD", "en-US")}</p>
+                </div>
               </div>
             </div>
           ) : (
-            <div className="flex flex-col items-center mb-7">
+            <div className="flex flex-col items-center gap-5 p-4 mb-7">
               <img
-                className="w-8/12 h-56"
+                className="object-cover w-7/12 h-80"
                 src={imgEmptyCart}
                 alt={imgEmptyCart}
               />

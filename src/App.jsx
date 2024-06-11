@@ -22,7 +22,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-300">
+    <div className="relative min-h-screen bg-gray-300">
       <Header />
       {isLoading ? <Loading /> : <ProductList products={product} />}
     </div>
