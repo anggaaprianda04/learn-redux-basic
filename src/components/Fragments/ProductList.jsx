@@ -3,9 +3,11 @@ import { formatMoney } from "../../utils";
 import Button from "../Utilities/Button";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlices";
+import { useSelector } from "react-redux";
 
 const ProductList = ({ products }) => {
   const dispatch = useDispatch();
+  const darkMode = useSelector((state) => state.darkMode.isDarkMode);
 
   return (
     <div className="grid grid-cols-5 gap-3 p-4">
@@ -30,6 +32,10 @@ const ProductList = ({ products }) => {
                 <p>{`Price : ${formatMoney(product.price, "USD", "en-US")}`}</p>
                 <Button
                   title="Add to cart"
+                  changeColor={`${darkMode ? "bg-slate-600" : "bg-green-500"}`}
+                  changeHoverColor={`${
+                    darkMode ? "hover:bg-slate-700" : "hover:bg-green-700"
+                  }`}
                   onClick={() => {
                     dispatch(
                       addToCart({ id, name: name, qty: 1, price: price })
