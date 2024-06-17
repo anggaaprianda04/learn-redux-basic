@@ -19,15 +19,15 @@ const TableCart = ({ listCart }) => {
         {listCart.map((cart, index) => {
           return (
             <tr key={index}>
-              <td className="p-1 text-center">{index + 1}.</td>
-              <td className="p-1 mb-1 line-clamp-1 text-ellipsis">
+              <td className="text-center align-middle">{index + 1}.</td>
+              <td className="py-1 align-middle line-clamp-1 text-ellipsis">
                 {cart.name}
               </td>
-              <td className="p-1 text-center">{cart.qty}</td>
-              <td className="flex justify-center align-middle">
+              <td className="text-center align-middle">{cart.qty}</td>
+              <td className="align-middle">
                 <button
                   onClick={() => dispatch(removeCartById(cart.id))}
-                  className="p-2 bg-red-600 rounded-md">
+                  className="p-2 ml-3 bg-red-600 rounded-md">
                   <FaTrash color="white" />
                 </button>
               </td>
