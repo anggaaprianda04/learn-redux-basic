@@ -71,29 +71,18 @@ const FormLogin = () => {
         type="password"
         placeholder="password"
       />
-      {isDisabled ? (
-        <Button
-          loading={false}
-          width="w-full"
-          disabled={true}
-          changeColor="bg-gray-400"
-          type="submit"
-          paddingTopBottom="py-3"
-          title="Login"
-        />
-      ) : (
-        <Button
-          disabled={isLoading}
-          loading={isLoading}
-          width="w-full"
-          type="submit"
-          paddingTopBottom="py-3"
-          title="Login"
-        />
-      )}
+      <Button
+        disabled={isDisabled}
+        loading={isLoading}
+        width="w-full"
+        type={isDisabled ? "button" : "submit"}
+        changeColor={isDisabled ? "bg-gray-400" : "bg-green-500"}
+        paddingTopBottom="py-3"
+        title="Login"
+      />
       {fetchError && (
         <div className="flex items-center justify-center gap-6">
-          <p className="my-3 font-semibold text-center text-red-700">
+          <p className="my-3 font-semibold text-center text-red-700 animate-bounce">
             {fetchError}
           </p>
           <button
