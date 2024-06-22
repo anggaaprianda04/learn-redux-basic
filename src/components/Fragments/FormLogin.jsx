@@ -45,12 +45,16 @@ const FormLogin = () => {
     }));
   };
 
-  useEffect(() => {
+  const handleDisabledButton = () => {
     if (input.username.length == 0 || input.password.length == 0) {
       setIsDisabled(true);
     } else {
       setIsDisabled(false);
     }
+  };
+
+  useEffect(() => {
+    handleDisabledButton();
   }, [input]);
 
   return (

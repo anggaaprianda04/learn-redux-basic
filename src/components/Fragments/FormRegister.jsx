@@ -26,7 +26,7 @@ const FormRegister = () => {
     }));
   };
 
-  useEffect(() => {
+  const handleDisabledButton = () => {
     if (
       input.fullname.length == 0 ||
       input.username.length == 0 ||
@@ -37,6 +37,10 @@ const FormRegister = () => {
     } else {
       setIsDisabled(false);
     }
+  };
+
+  useEffect(() => {
+    handleDisabledButton();
   }, [input]);
 
   return (
